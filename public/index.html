@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Data Mahasiswa</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/"
+        ><span class="logo">M</span> Mahasiswa<span class="brand-dot"
+          >.</span
+        ></a
+      ><span class="header-label">PENGELOLAAN DATA</span>
+    </header>
+    <main>
+      <div class="intro">
+        <div>
+          <p class="eyebrow">DIREKTORI AKADEMIK</p>
+          <h1>Data mahasiswa</h1>
+        </div>
+        <span id="total" class="count">Memuat…</span>
+      </div>
+      <div id="notice" role="status" aria-live="polite" hidden></div>
+      <div class="layout">
+        <section class="card editor" aria-labelledby="form-title">
+          <h2 id="form-title">FORMULIR MAHASISWA</h2>
+          <p class="hint">Lengkapi seluruh kolom di bawah ini.</p>
+          <form id="student-form">
+            <label for="nim">NIM</label
+            ><input
+              id="nim"
+              name="nim"
+              inputmode="numeric"
+              pattern="[0-9]{8,20}"
+              minlength="8"
+              maxlength="20"
+              placeholder="Contoh: 255150301111001"
+              required
+            /><small>8–20 angka, unik untuk setiap mahasiswa.</small>
+            <label for="nama">Nama lengkap</label
+            ><input
+              id="nama"
+              name="nama"
+              minlength="2"
+              maxlength="100"
+              placeholder="Masukkan nama lengkap"
+              required
+            />
+            <label for="prodi">Program studi</label
+            ><input
+              id="prodi"
+              name="prodi"
+              list="prodi-list"
+              minlength="2"
+              maxlength="100"
+              placeholder="Pilih atau ketik program studi"
+              required
+            />
+            <datalist id="prodi-list">
+              <option value="Teknologi Informasi"></option>
+              <option value="Teknik Informatika"></option>
+              <option value="Sistem Informasi"></option>
+              <option value="Teknik Komputer"></option>
+              <option value="Pendidikan Teknologi Informasi"></option>
+            </datalist>
+            <label for="email">Email</label
+            ><input
+              id="email"
+              name="email"
+              type="email"
+              maxlength="254"
+              placeholder="nama@example.com"
+              required
+            />
+            <p id="form-error" class="error" role="alert" hidden></p>
+            <div class="form-actions">
+              <button id="save" class="primary" type="submit">
+                Tambah mahasiswa</button
+              ><button id="cancel" class="secondary" type="button" hidden>
+                Batal edit
+              </button>
+            </div>
+          </form>
+        </section>
+        <section class="card directory" aria-labelledby="list-title">
+          <div class="list-heading">
+            <div>
+              <h2 id="list-title">Daftar mahasiswa</h2>
+              <p class="hint">Data tersimpan dan siap dikelola.</p>
+            </div>
+            <button id="refresh" class="secondary" type="button">
+              Muat ulang
+            </button>
+          </div>
+          <label class="sr-only" for="search">Cari mahasiswa</label
+          ><input
+            id="search"
+            type="search"
+            placeholder="Cari nama, NIM, program studi, atau email…"
+          />
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">MAHASISWA</th>
+                  <th scope="col">PROGRAM STUDI</th>
+                  <th scope="col">AKSI</th>
+                </tr>
+              </thead>
+              <tbody id="rows"></tbody>
+            </table>
+          </div>
+          <p id="empty" class="empty">Memuat data mahasiswa…</p>
+          <p id="result-count" class="table-footer"></p>
+        </section>
+      </div>
+    </main>
+    <dialog id="delete-dialog" aria-labelledby="delete-title">
+      <h2 id="delete-title">Hapus mahasiswa?</h2>
+      <p id="delete-text"></p>
+      <p class="hint">Data yang dihapus tidak dapat dikembalikan.</p>
+      <p id="delete-error" class="error" role="alert" hidden></p>
+      <div class="dialog-actions">
+        <button id="delete-cancel" class="secondary">Batal</button
+        ><button id="delete-confirm" class="danger">Hapus data</button>
+      </div>
+    </dialog>
+  </body>
+</html>
