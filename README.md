@@ -37,7 +37,7 @@ DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_USER=root
 DB_PASSWORD="password_mysql_kamu"
-DB_NAME=crud_mahasiswa
+DB_NAME=PAWTugas4
 PORT=3000
 ```
 
